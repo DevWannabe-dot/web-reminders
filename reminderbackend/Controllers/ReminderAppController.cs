@@ -18,7 +18,7 @@ namespace ReminderWebApp.Controllers
         }
 
         [HttpGet]
-        [Route("GetReminders")]
+        [Route("Reminders")]
         public IActionResult GetReminders()
         {
             string query = "SELECT * FROM dbo.reminders";
@@ -55,7 +55,7 @@ namespace ReminderWebApp.Controllers
         }
 
         [HttpPost]
-        [Route("Post_AddReminder")]
+        [Route("Reminder")]
         public IActionResult Post_AddReminder([FromForm] string newReminderName, [FromForm] string newReminderDate)
         {
             string query = "INSERT INTO dbo.reminders VALUES(@newReminderName, @newReminderDate)";
@@ -93,7 +93,7 @@ namespace ReminderWebApp.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteReminder")]
+        [Route("Reminder")]
         public IActionResult DeleteReminder(int id)
         {
             string query = "DELETE FROM dbo.reminders WHERE id = @id";

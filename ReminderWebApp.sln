@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReminderWebApp", "ReminderWebApp\ReminderWebApp.csproj", "{19C33F81-9204-4858-A16A-6CEB5ED00A35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "reminderbackend", "reminderbackend\reminderbackend.csproj", "{19C33F81-9204-4858-A16A-6CEB5ED00A35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.labelSpanStyle {
+  align-items: center;
+  width: 10%;
+}
+.newReminder {
+  width:80%;
+}
+#btnCriarStyle {
+  margin-left: 95%;
+}

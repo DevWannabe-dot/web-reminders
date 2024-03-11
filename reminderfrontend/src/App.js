@@ -24,16 +24,30 @@ class App extends Component{
   }
 
   async addClick(){
-    var newReminder = document.getElementById("newReminder").value;
+    var newReminderName = document.getElementById("newReminderName").value;
+    var newReminderDate = document.getElementById("newReminderDate").value;
+    
+    // Convert newReminderDate to Date object
+    var dataEntrada = new Date(newReminderDate);
+
+    // Get today's date
+    var hoje = new Date();
+
+    if (dataEntrada <= hoje) {
+        alert("A data deve estar no futuro.");
+        return;
+    }
+    // Se chegou até aqui, tudo bem
     const data=new FormData();
-    data.append("newReminder", newReminder);
+    data.append("newReminderName", newReminderName);
+    data.append("newReminderDate", newReminderDate);
 
     fetch(this.API_URL+"api/ReminderApp/Reminder",{
       method:"POST",
       body:data
     }).then(res=>res.json())
     .then((result)=>{
-      alert(result);
+      alert(JSON.stringify(result));
       this.refreshReminders();
     })
   }
@@ -43,7 +57,7 @@ class App extends Component{
       method:"DELETE",
     }).then(res=>res.json())
     .then((result)=>{
-      alert(result);
+      alert(JSON.stringify(result));
       this.refreshReminders();
     })
   }
@@ -56,22 +70,22 @@ class App extends Component{
         <h2>Novo lembrete</h2>
           <form classname="formStyle">
             <span className="labelSpanStyle">
-            <label for="newReminder">Nome</label>
+            <label for="newReminderName">Nome</label>
             </span>
-            <input type="text" placeholder="Nome do lembrete" className="newReminder"/>&nbsp; <br/>
+            <input type="text" placeholder="Nome do lembrete" id="newReminderName"/>&nbsp; <br/>
           </form>
           <form classname="formStyle">
             <span className="labelSpanStyle">
-            <label for="newReminder">Data</label>
+            <label for="newReminderDate">Data</label>
             </span>
-            <input type="date" placeholder="Data do lembrete (no formato dd/mm/yyyy)" className="newReminder"/>&nbsp; <br/>
+            <input type="date" placeholder="Data do lembrete (no formato dd/mm/yyyy)" id="newReminderDate"/>&nbsp; <br/>
           </form>
 
           <button onClick={()=>this.addClick()} id="btnCriarStyle">Criar</button>
         {reminders.map(reminder=>
           <p>
             {reminder.description}&nbsp;
-            <button onClick={()=>this.addClick(reminder.id)}>Delete Reminder</button>
+            <button onClick={()=>this.deleteClick(reminder.id)}>Delete Reminder</button>
           </p>)}
       </div>
     );
